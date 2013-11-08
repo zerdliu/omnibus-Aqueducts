@@ -15,10 +15,10 @@ dependency "preparation"
 dependency "libyaml"
 dependency "ruby"
 dependency "fluentd"
-#dependency "fluent-plugin-kafka"
+dependency "kafka-rb"
+dependency "fluent-plugin-kafka"
 dependency "zookeeper"
 dependency "consistent-hashing"
-#dependency "kafka-rb"
 
 # version manifest file
 dependency "version-manifest"

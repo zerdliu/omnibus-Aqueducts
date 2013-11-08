@@ -6,16 +6,18 @@
 #  https://github.com/opscode/omnibus-software/tree/master/config/software
 #
 name "fluent-plugin-kafka"
-version "0.0.1"
+version "ecff754de76253264eb42cd3826585712db8c80f"
 
 dependency "rubygems"
 dependency "fluentd"
+dependency "kafka-rb"
+
+source :git => "git://github.com/ops-baidu/#{name}.git"
 
 relative_path "#{name}"
 
 build do
-  command "git clone https://github.com/ops-baidu/#{name}.git"
-  command "cd /var/cache/omnibus/src/#{name}"
   gem "build #{name}.gemspec"
-  gem "install -l #{name}*.gemspec"
+  gem "install -l #{source_dir}/#{name}/#{name}-*.gem"
+  command "rm -rf #{source_dir}/#{name}"
 end

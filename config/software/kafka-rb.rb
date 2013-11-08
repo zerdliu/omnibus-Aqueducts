@@ -6,19 +6,17 @@
 #  https://github.com/opscode/omnibus-software/tree/master/config/software
 #
 name "kafka-rb"
-version "0.0.15"
+version "59eeb12dfb70f2aec2519d098b3941766920e147"
 
 dependency "ruby"
 dependency "rubygems"
-dependency "bundler"
-dependency "rsync"
 
 relative_path "#{name}"
 
-source :git => "http://github.com/ops-baidu/kafka-rb.git"
+source :git => "git://github.com/ops-baidu/#{name}.git"
 
 build do
-  bundle "install --path=#{install_dir}/embedded/service/gem"
-  command "mkdir -p #{install_dir}/embedded/service/#{name}"
-  command "#{install_dir}/embedded/bin/rsync -a --delete --exclude=.git/*** --exclude=.gitignore ./ #{install_dir}/embedded/service/#{name}/"
+  gem "build #{name}.gemspec"
+  gem "install -l #{source_dir}/#{name}/#{name}-*.gem"
+  command "rm -rf #{source_dir}/#{name}"
 end
