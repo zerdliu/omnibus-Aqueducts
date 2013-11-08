@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary Aqueducts removal steps
+# after package is uninstalled.
+#
+
+echo "Aqueducts has been uninstalled!"
+
+exit 0
